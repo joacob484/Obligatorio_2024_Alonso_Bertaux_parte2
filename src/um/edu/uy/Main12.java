@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main12 {
     int numero =0
     public static void main(String[] args) {
-        int numero =0
+        int numero =0;
     while(numero == 0){
         System.out.println("Bienvenido a Spotify!");
         System.out.println("A continuación se presentan las consultas que puede realizar:");
@@ -25,7 +25,7 @@ public class Main12 {
                     String pais = scanner.next();
                     System.out.println("Ingrese la fecha:");
                     String fecha = scanner.next();
-                    consultasSpotify.top10CancionesPais(pais,fecha );
+                    consultasSpotify.top10CancionesPais(pais, fecha);
                     break;
                 case 2:
                     System.out.println("Ingrese la fecha:");
@@ -42,7 +42,7 @@ public class Main12 {
                 case 4:
                     System.out.println("Ingrese la fecha:");
                     String fecha3 = scanner.next();
-                    System.out.println("Ingrese el nombre del artista:");
+                    System.out.println("Ingrese la cedula del artista:");
                     String artista = scanner.next();
                     consultasSpotify.CantVecesArtistaTop50(fecha3, artista);
                     break;
@@ -51,15 +51,16 @@ public class Main12 {
                     String inicio2 = scanner.next();
                     System.out.println("Ingrese la fecha de fin:");
                     String fin2 = scanner.next();
-                    System.out.println("Ingrese la duración de las canciones:");
-                    int duracion = scanner.nextInt();
-                    consultasSpotify.CantCancionesTempoEspecifico(inicio2, fin2, duracion);
+                    System.out.println("Ingrese el titulo de las cancion:");
+                    String titulo = scanner.next();
+                    consultasSpotify.CantCancionesTempoEspecifico(inicio2, fin2,titulo);
                     break;
                 case 6:
                     numero = 1;
                     break;
                 default:
                     System.out.println("Consulta inválida.");
+            }
         }
     }
 }
