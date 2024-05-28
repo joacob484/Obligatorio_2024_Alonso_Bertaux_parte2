@@ -3,6 +3,7 @@ package um.edu.uy;
 import java.util.Objects;
 
 public class Cancion {
+
     private String titulo;
     private Artista artista;
     private int duracion;
