@@ -11,6 +11,7 @@ public class ConsultasSpotify {
     }
 
     public void top5CancionesMasTop50(String dia ){
+        LocalDate fecha = LocalDate.parse(dia);
 
     }
 
@@ -20,12 +21,16 @@ public class ConsultasSpotify {
 
     }
 
-    public  int CantVecesArtistaTop50( String fecha, ) {
+    public  int CantVecesArtistaTop50( String fecha, String cedulaArtista) {
+        LocalDate fecha1 = LocalDate.parse(fecha);
+        Integer cedula = Integer.parseInt(cedulaArtista);
+
+
         return 0;
 
     }
 
-    public int CantCancionesTempoEspecifico( String iniciofecha, String finfecha) {
+    public int CantCancionesTempoEspecifico( String iniciofecha, String finfecha,String tituloCancion) {
         return 0;
     }
 
