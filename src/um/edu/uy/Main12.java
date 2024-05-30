@@ -1,10 +1,9 @@
 package um.edu.uy;
 
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main12 {
-    int numero =0
+    int numero =0;
     public static void main(String[] args) {
         int numero =0;
     while(numero == 0){

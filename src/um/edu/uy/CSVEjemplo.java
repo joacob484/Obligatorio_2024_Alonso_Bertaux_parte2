@@ -1,14 +1,17 @@
 package um.edu.uy;
-import com.opencsv.CSVReader;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
+
 public class CSVEjemplo {
     public static void main(String[] args) {
         String csvFile = "/Users/joaco/Desktop/TuplasObligatorio.csv";
-        try (CSVReader reader = new CSVReader(new FileReader(csvFile))) {
-            String[] line;
-            while ((line = reader.readNext()) != null) {
-                for (String cell : line) {
+        try (CSVParser parser = new CSVParser(new FileReader(csvFile), CSVFormat.DEFAULT)) {
+            for (CSVRecord record : parser) {
+                for (String cell : record) {
                     System.out.print(cell + " ");
                 }
                 System.out.println();
