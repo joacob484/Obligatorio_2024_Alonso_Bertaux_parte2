@@ -1,13 +1,23 @@
 package um.edu.uy;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import um.edu.uy.CSVEjemplo;
 public class ConsultasSpotify {
 
+    private CSVEjemplo CSVEjemplo;
 
-    public void top10CancionesPais(String pais, String dia) {
+    public ConsultasSpotify(CSVEjemplo CSVEjemplo) {
+        this.CSVEjemplo = CSVEjemplo;
+    }
 
+    public List<Cancion> top10CancionesPais(String pais, String dia) {
+        LocalDate fecha = LocalDate.parse(dia);
+    return CSVEjemplo.stream().filter(cancion -> cancion.getPais().equals(pais) && cancion.getFecha().equals(fecha)).sorted(Comparator.comparing(Cancion::getRanking)).limit(10).collect(Collectors.toList());
     }
 
     public void top5CancionesMasTop50(String dia ){

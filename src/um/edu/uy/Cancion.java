@@ -1,5 +1,6 @@
 package um.edu.uy;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Cancion {
@@ -7,14 +8,31 @@ public class Cancion {
     private String titulo;
     private Artista artista;
     private int duracion;
-    private String genero;
+    private Float tempo;
+    private String pais;
+    private LocalDate fecha;
+    private int ranking;
 
 
-    public Cancion(String titulo, Artista artista, int duracion, String genero) {
+
+
+
+    public Cancion(String titulo, Artista artista, int duracion, Float tempo , String pais,LocalDate fecha, int ranking) {
         this.titulo = titulo;
         this.artista = artista;
         this.duracion = duracion;
-        this.genero = genero;
+        this.tempo = tempo;
+        this.pais = pais;
+        this.ranking = ranking;
+        this.fecha = fecha;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     public String getTitulo() {
@@ -41,12 +59,28 @@ public class Cancion {
         this.duracion = duracion;
     }
 
-    public String getGenero() {
-        return genero;
+    public Float getTempo() {
+        return tempo;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setTempo(Float tempo) {
+        this.tempo = tempo;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
     }
 
     @Override

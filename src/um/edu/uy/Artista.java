@@ -5,12 +5,10 @@ import java.util.Objects;
 
 public class Artista {
     private String nombre;
-    private String cedula;
     private LinkedList<Cancion> canciones;
 
-    public Artista(String nombre, String cedula) {
+    public Artista(String nombre) {
         this.nombre = nombre;
-        this.cedula = cedula;
         this.canciones = new LinkedList<>();
     }
 
@@ -20,14 +18,6 @@ public class Artista {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
     }
 
     public LinkedList<Cancion> getCanciones() {
@@ -43,11 +33,11 @@ public class Artista {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Artista artista = (Artista) o;
-        return Objects.equals(cedula, artista.cedula);
+        return Objects.equals(nombre, artista.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cedula);
+        return Objects.hash(nombre);
     }
 }
