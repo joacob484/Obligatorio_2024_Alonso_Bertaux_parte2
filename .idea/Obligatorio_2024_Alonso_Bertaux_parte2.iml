@@ -10,14 +10,12 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Downloads/commons-csv-1.11.0-bin(1)/commons-csv-1.11.0" />
+          <root url="jar://$USER_HOME$/Downloads/commons-csv-1.11.0/commons-csv-1.11.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$USER_HOME$/Downloads/commons-csv-1.11.0-bin(1)/commons-csv-1.11.0" />
+          <root url="jar://$USER_HOME$/Downloads/commons-csv-1.11.0/commons-csv-1.11.0-sources.jar!/" />
         </SOURCES>
-        <jarDirectory url="file://$USER_HOME$/Downloads/commons-csv-1.11.0-bin(1)/commons-csv-1.11.0" recursive="false" />
-        <jarDirectory url="file://$USER_HOME$/Downloads/commons-csv-1.11.0-bin(1)/commons-csv-1.11.0" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>
