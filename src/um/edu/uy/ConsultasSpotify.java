@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 import um.edu.uy.CSVEjemplo;
 public class ConsultasSpotify {
 
-    private CSVEjemplo CSVEjemplo;
+    private CSVEjemplo csvEjemplo;
 
     public ConsultasSpotify(CSVEjemplo CSVEjemplo) {
-        this.CSVEjemplo = CSVEjemplo;
+        this.csvEjemplo =  CSVEjemplo;
     }
 
     public List<Cancion> top10CancionesPais(String pais, String dia) {
         LocalDate fecha = LocalDate.parse(dia);
-    return CSVEjemplo.stream().filter(cancion -> cancion.getPais().equals(pais) && cancion.getFecha().equals(fecha)).sorted(Comparator.comparing(Cancion::getRanking)).limit(10).collect(Collectors.toList());
+    return csvEjemplo.stream().filter(cancion -> cancion.getPais().equals(pais) && cancion.getFecha().equals(fecha)).sorted(Comparator.comparing(Cancion::getRanking)).limit(10).collect(Collectors.toList());
     }
 
     public void top5CancionesMasTop50(String dia ){

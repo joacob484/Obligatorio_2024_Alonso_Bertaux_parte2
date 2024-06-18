@@ -16,8 +16,15 @@ import java.util.stream.Stream;
 public class CSVEjemplo {
     private static List<Cancion> canciones = new ArrayList<>();
 
+    private static List<Artista> artistas = new ArrayList<>();
+
+    public CSVEjemplo(String csvFile) {
+        this.canciones = new ArrayList<>();
+        this.artistas = new ArrayList<>();
+    }
+
     public static void  main(String[] args) {
-        String csvFile = "/Users/joaco/Desktop/TuplasObligatorio.csv";
+        String csvFile = "universal_top_spotify_songs.csv";
         try (CSVParser parser = new CSVParser(new FileReader(csvFile), CSVFormat.DEFAULT)) {
             for (CSVRecord record : parser) {
                 for (String cell : record) {

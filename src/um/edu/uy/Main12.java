@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main12 {
     int numero =0;
+
     public static void main(String[] args) {
         int numero =0;
     while(numero == 0){
@@ -17,7 +18,8 @@ public class Main12 {
         System.out.println("Por favor, ingrese el número de la consulta que desea realizar:");
             Scanner scanner = new Scanner(System.in);
             int consulta = scanner.nextInt();
-            ConsultasSpotify consultasSpotify = new ConsultasSpotify();
+        CSVEjemplo csvEjemplo = new CSVEjemplo("universal_top_spotify_songs.csv");
+            ConsultasSpotify consultasSpotify = new ConsultasSpotify(csvEjemplo);
             switch (consulta) {
                 case 1:
                     System.out.println("Ingrese el país:");
