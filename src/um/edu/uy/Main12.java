@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main12 {
     int numero =0;
 
+
     public static void main(String[] args) {
         int numero =0;
         Scanner scanner = new Scanner(System.in);
@@ -19,6 +20,7 @@ public class Main12 {
             System.out.println("3. Consultar los 7 artistas más escuchados en el top 50 en un rango de fechas.");
             System.out.println("4. Consultar la cantidad de veces que un artista aparece en el top 50 en un día específico.");
             System.out.println("5. Consultar la cantidad de canciones de un artista que tienen una duración específica en un rango de fechas.");
+            System.out.println("6. Salir.");
             System.out.println("Por favor, ingrese el número de la consulta que desea realizar:");
 
             int consulta = scanner.nextInt();
@@ -75,5 +77,6 @@ public class Main12 {
                     System.out.println("Consulta inválida.");
             }
         }
+
     }
 }

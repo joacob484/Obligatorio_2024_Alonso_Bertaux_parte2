@@ -29,12 +29,15 @@ public class CSVEjemplo {
     }
 
     public CSVEjemplo() {
-        long startTime = System.currentTimeMillis();
+        Runtime.getRuntime().gc();
+        // Capturar la memoria utilizada antes de ejecutar el método
+        long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         this.hashCancionesFechaPais = new MyHashImpl<>();
         this.hashCancionesFecha = new MyHashImpl<>();
         this.hashCancionesFechaTempo = new MyHashImpl<>();
 
-        try (BufferedReader in = new BufferedReader(new FileReader(new File("/Users/joaco/Desktop/universal_top_spotify_songs.csv")))) { // aca va tu direccion en tu compu
+        try (BufferedReader in = new BufferedReader(new FileReader(new File("/Users/joaco/Desktop/universal_top_spotify_songs.csv")))) { //aca va la direccion en tu compu
 
             int line = 0;
             for (String a = in.readLine(); a != null; a = in.readLine()) {
@@ -102,10 +105,21 @@ public class CSVEjemplo {
             System.out.println("File I/O error!");
             e.printStackTrace();
         }
-        long endTime = System.currentTimeMillis();
-        long totalTime = endTime - startTime;
+        long endTime = System.nanoTime();
 
-        System.out.println("Tiempo total de ejecución (en milisegundos) para carga de datos: " + totalTime);
+        // Calcular el tiempo de ejecución
+        long duration = endTime - startTime; // tiempo en nanosegundos
+
+        // Convertir a milisegundos si es necesario
+        double durationInMilliseconds = duration / 1_000_000.0;
+        long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        // Calcular el uso de memoria
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+
+        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
     }
-    }
+}
 

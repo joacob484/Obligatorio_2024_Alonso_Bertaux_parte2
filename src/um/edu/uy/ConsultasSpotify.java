@@ -16,6 +16,10 @@ public class ConsultasSpotify {
         this.CSVEjemplo = pruebaCSV;
     }
     public void top10CancionesPais(String pais, String fecha) {
+        Runtime.getRuntime().gc();
+        // Capturar la memoria utilizada antes de ejecutar el método
+        long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         LocalDate date = LocalDate.parse(fecha);
         MyHash<String, MyHash<String, MyList<String>>> hashCancionesFechaPais = CSVEjemplo.getHashCancionesFechaPais();
 
@@ -24,9 +28,6 @@ public class ConsultasSpotify {
 
         MyList<String> top10 = new MyLinkedListImpl<>();
         MyHash<String, MyList<String>> hashPais = hashCancionesFechaPais.get(fecha);
-        for(int i=0;i<CSVEjemplo.getHashCancionesFechaPais().size();i++){
-            System.out.println(CSVEjemplo.getHashCancionesFechaPais().get(fecha).get(pais));
-        }
 
         if (hashPais == null) {
             System.out.println("No se encontraron canciones para la fecha especificada.");
@@ -39,8 +40,6 @@ public class ConsultasSpotify {
             return;
         }
 
-        System.out.println("Canciones encontradas: " + canciones.size());
-
         for (int i = 0; i < canciones.size(); i++) {
             String cancion = canciones.get(i);
             String[] valores = cancion.split("\",\"");
@@ -51,7 +50,6 @@ public class ConsultasSpotify {
             if (top10.size() < 10) {
                 top10.add(cancion);
             } else {
-                // Encontrar la canción con el ranking más alto en top10
                 int maxIndex = 0;
                 for (int h = 1; h < top10.size(); h++) {
                     String[] top10Valores = cancion.split("\",\"");
@@ -64,7 +62,6 @@ public class ConsultasSpotify {
                         maxIndex = h;
                     }
                 }
-                // Reemplazar si la canción actual tiene un mejor ranking
                 if (ranking < Integer.parseInt(top10.get(maxIndex).split("\",\"")[3])) {
                     top10.set(maxIndex, cancion);
                 }
@@ -76,10 +73,29 @@ public class ConsultasSpotify {
             String[] valores = top10.get(i).split(",");
             System.out.println((i + 1) + ". "  + valores[1] + " (Ranking: " + valores[3] + ")");
         }
+        long endTime = System.nanoTime();
+
+        // Calcular el tiempo de ejecución
+        long duration = endTime - startTime; // tiempo en nanosegundos
+
+        // Convertir a milisegundos si es necesario
+        double durationInMilliseconds = duration / 1_000_000.0;
+        long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        // Calcular el uso de memoria
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+
+        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
     }
 
 
     public void top5CancionesMasTop50(String dia) {
+        Runtime.getRuntime().gc();
+        // Capturar la memoria utilizada antes de ejecutar el método
+        long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         LocalDate fecha = LocalDate.parse(dia);
         MyHash<String, MyList<String>> hashCancionesFecha = CSVEjemplo.getHashCancionesFecha();
         MyHash<String, Integer> countMap = new MyHashImpl<>();
@@ -98,14 +114,11 @@ public class ConsultasSpotify {
                 }
             }
         }
-
-        // Obtener las 5 canciones más populares
         MyList<String> top5 = new MyLinkedListImpl<>();
         for (int i = 0; i < 5; i++) {
             String maxTitulo = null;
             int maxCount = -1;
-            MyList<String> keys = countMap.keys(); // Obtener todas las claves
-
+            MyList<String> keys = countMap.keys();
             for (int j = 0; j < keys.size(); j++) {
                 String titulo = keys.get(j);
                 int count = countMap.get(titulo);
@@ -129,12 +142,30 @@ public class ConsultasSpotify {
         System.out.println("Top 5 canciones que aparecen más veces en el top 50 el " + dia + ":");
         for (int i = 0; i < top5.size(); i++) {
             String[] valores = top5.get(i).split("\",\"");
-            System.out.println((i + 1)  + " - " + valores[2]);
+            System.out.println((i + 1)  + " - " + valores[1]);
         }
+        long endTime = System.nanoTime();
+        // Calcular el tiempo de ejecución
+        long duration = endTime - startTime; // tiempo en nanosegundos
+
+        // Convertir a milisegundos si es necesario
+        double durationInMilliseconds = duration / 1_000_000.0;
+        long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        // Calcular el uso de memoria
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+
+        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
     }
 
 
     public void top7ArtistasMasTop50(String inicio, String fin){
+        Runtime.getRuntime().gc();
+        // Capturar la memoria utilizada antes de ejecutar el método
+        long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         LocalDate fechaInicio = LocalDate.parse(inicio);
         LocalDate fechaFin = LocalDate.parse(fin);
         MyHash<String, MyList<String>> hashCancionesFecha = CSVEjemplo.getHashCancionesFecha();
@@ -158,13 +189,9 @@ public class ConsultasSpotify {
                 }
             }
         }
-
-        // Encontrar los 7 artistas más populares
         String[] top7Artistas = new String[7];
         int[] top7Counts = new int[7];
-
-        MyList<String> keys = countMap.keys(); // Obtener todas las claves
-
+        MyList<String> keys = countMap.keys();
         for (int i = 0; i < keys.size(); i++) {
             String artista = keys.get(i);
             int count = countMap.get(artista);
@@ -186,10 +213,28 @@ public class ConsultasSpotify {
                 System.out.println((i + 1) + ". " + top7Artistas[i] + " - Veces: " + top7Counts[i]);
             }
         }
+        long endTime = System.nanoTime();
+        // Calcular el tiempo de ejecución
+        long duration = endTime - startTime; // tiempo en nanosegundos
+
+        // Convertir a milisegundos si es necesario
+        double durationInMilliseconds = duration / 1_000_000.0;
+        long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        // Calcular el uso de memoria
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+
+        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
 
     }
 
     public  void CantVecesArtistaTop50( String fecha, String nombreArtista,String pais) {
+        Runtime.getRuntime().gc();
+        // Capturar la memoria utilizada antes de ejecutar el método
+        long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         LocalDate date = LocalDate.parse(fecha);
         MyHash<String, MyHash<String, MyList<String>>> hashCancionesFechaPais = CSVEjemplo.getHashCancionesFechaPais();
 
@@ -223,22 +268,36 @@ public class ConsultasSpotify {
                 }
             }
         }
-
         System.out.println("El artista " + nombreArtista + " aparece " + count + " veces en el top 50 de " + pais + " el " + fecha);
+        long endTime = System.nanoTime();
+
+        // Calcular el tiempo de ejecución
+        long duration = endTime - startTime; // tiempo en nanosegundos
+
+        // Convertir a milisegundos si es necesario
+        double durationInMilliseconds = duration / 1_000_000.0;
+        long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        // Calcular el uso de memoria
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+
+        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
     }
 
     public void CantCancionesTempoEspecifico(String inicioFecha, String finFecha, BigDecimal tempoMinimo, BigDecimal tempoMaximo) {
+        Runtime.getRuntime().gc();
+        // Capturar la memoria utilizada antes de ejecutar el método
+        long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long startTime = System.nanoTime();
         LocalDate fechaInicio = LocalDate.parse(inicioFecha);
         LocalDate fechaFin = LocalDate.parse(finFecha);
         MyHash<String, MyHash<BigDecimal, MyList<String>>> hashCancionesFechaTempo = CSVEjemplo.getHashCancionesFechaTempo();
 
-        System.out.println("Fecha de inicio: " + inicioFecha);
-        System.out.println("Fecha de fin: " + finFecha);
-        System.out.println("Tempo mínimo: " + tempoMinimo);
-        System.out.println("Tempo máximo: " + tempoMaximo);
 
         int count = 0;
-        MyHash<String, Boolean> cancionesProcesadas = new MyHashImpl<>();
+        MyHash<String, Boolean> cancionesProcesadas = new MyHashImpl<>(); // Hash para rastrear canciones únicas
 
         for (LocalDate date = fechaInicio; !date.isAfter(fechaFin); date = date.plusDays(1)) {
             String fechaStr = date.toString();
@@ -253,11 +312,12 @@ public class ConsultasSpotify {
                 BigDecimal tempo = tempos.get(i);
                 if (tempo.compareTo(tempoMinimo) >= 0 && tempo.compareTo(tempoMaximo) <= 0) {
                     MyList<String> canciones = hashTempo.get(tempo);
-                    System.out.println("Procesando " + canciones.size() + " canciones con tempo: " + tempo);
                     for (int j = 0; j < canciones.size(); j++) {
                         String cancion = canciones.get(j);
-                        if (!cancionesProcesadas.contains(cancion)) {
-                            cancionesProcesadas.put(cancion, true);
+                        String[] valores = cancion.split(",");
+                        String id = valores[0].trim();
+                        if (!cancionesProcesadas.contains(id)) {
+                            cancionesProcesadas.put(id, true);
                             count++;
                         }
                     }
@@ -266,6 +326,21 @@ public class ConsultasSpotify {
         }
 
         System.out.println("El número total de canciones únicas con tempo entre " + tempoMinimo + " y " + tempoMaximo + " desde " + inicioFecha + " hasta " + finFecha + " es: " + count);
+        long endTime = System.nanoTime();
+
+        // Calcular el tiempo de ejecución
+        long duration = endTime - startTime; // tiempo en nanosegundos
+
+        // Convertir a milisegundos si es necesario
+        double durationInMilliseconds = duration / 1_000_000.0;
+        long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        // Calcular el uso de memoria
+        long memoryUsed = memoryAfter - memoryBefore;
+
+        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+
+        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
     }
 
 }
