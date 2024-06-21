@@ -214,7 +214,10 @@ public class ConsultasSpotify {
                 valores[j] = valores[j].replace("\"", "");
             }
             System.out.println("Procesando canción: " + cancion);
-            String[] artistas = valores[2].split(",");
+            String[] artistas = valores[2].split("\",\"");
+            for (int k = 0; k < artistas.length; k++) {
+                artistas[k] = artistas[k].replace("\"", "");
+            }
             for (String artista : artistas) {
                 System.out.println("Artista encontrado: " + artista.trim());
                 if (artista.trim().equalsIgnoreCase(nombreArtista)) {

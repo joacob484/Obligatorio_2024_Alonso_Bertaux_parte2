@@ -25,24 +25,24 @@ public class Main12 {
             switch (consulta) {
                 case 1:
                     System.out.println("Ingrese el país:");
-                    String pais = scanner.next();
+                    String pais = scanner.nextLine();
                     System.out.println("Ingrese la fecha:");
-                    String fecha = scanner.next();
+                    String fecha = scanner.nextLine();
                     consultasSpotify.top10CancionesPais(pais,fecha);
                     System.out.println("Las 10 canciones más escuchadas en " + pais + " el " + fecha + " son:");
                     break;
                 case 2:
-                    System.out.println("Ingrese el dia:");
-                    String fecha2 = scanner.next();
+                    System.out.println("Ingrese la fecha:");
+                    String fecha2 = scanner.nextLine();
                     System.out.println("Las 5 canciones más escuchadas en "  + fecha2 + " son:");
                     consultasSpotify.top5CancionesMasTop50(fecha2);
                     break;
                 case 3:
                     System.out.println("Ingrese la fecha de inicio:");
-                    String inicio = scanner.next();
+                    String inicio = scanner.nextLine();
                     System.out.println("Ingrese la fecha de fin:");
-                    String fin = scanner.next();
-                    System.out.println("Las 7 artistas con mas top 50 en "  + inicio + "hasta" + fin + " son:");
+                    String fin = scanner.nextLine();
+                    System.out.println("Las 7 artistas con mas top 50 en "  + inicio + " hasta " + fin + " son:");
                     consultasSpotify.top7ArtistasMasTop50(inicio,fin);
                     break;
                 case 4:
@@ -57,13 +57,13 @@ public class Main12 {
                     break;
                 case 5:
                     System.out.println("Ingrese la fecha de inicio:");
-                    String inicio2 = scanner.next();
+                    String inicio2 = scanner.nextLine();
                     System.out.println("Ingrese la fecha de fin:");
-                    String fin2 = scanner.next();
+                    String fin2 = scanner.nextLine();
                     System.out.println("Ingrese el tempo minimo:");
-                    BigDecimal tempoMin = new BigDecimal(scanner.next());
+                    BigDecimal tempoMin = new BigDecimal(scanner.nextLine());
                     System.out.println("Ingrese el tempo maximo:");
-                    BigDecimal tempoMax =new BigDecimal(scanner.next());
+                    BigDecimal tempoMax =new BigDecimal(scanner.nextLine());
                     consultasSpotify.CantCancionesTempoEspecifico(inicio2,fin2,tempoMin,tempoMax);
                     break;
                 case 6:
