@@ -1,5 +1,6 @@
 package um.edu.uy;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -8,16 +9,13 @@ public class Cancion {
     private String titulo;
     private Artista artista;
     private int duracion;
-    private Float tempo;
+    private BigDecimal tempo;
     private String pais;
     private LocalDate fecha;
     private int ranking;
 
 
-
-
-
-    public Cancion(String titulo, Artista artista, int duracion, Float tempo , String pais,LocalDate fecha, int ranking) {
+    public Cancion(String titulo, Artista artista, int duracion, BigDecimal tempo, String pais, LocalDate fecha, int ranking) {
         this.titulo = titulo;
         this.artista = artista;
         this.duracion = duracion;
@@ -59,11 +57,11 @@ public class Cancion {
         this.duracion = duracion;
     }
 
-    public Float getTempo() {
+    public BigDecimal getTempo() {
         return tempo;
     }
 
-    public void setTempo(Float tempo) {
+    public void setTempo(BigDecimal tempo) {
         this.tempo = tempo;
     }
 
@@ -94,5 +92,18 @@ public class Cancion {
     @Override
     public int hashCode() {
         return Objects.hash(titulo);
+    }
+
+    @Override
+    public String toString() {
+        return "Cancion{" +
+                "titulo='" + titulo + '\'' +
+                ", artista=" + artista +
+                ", duracion=" + duracion +
+                ", tempo=" + tempo +
+                ", pais='" + pais + '\'' +
+                ", fecha=" + fecha +
+                ", ranking=" + ranking +
+                '}';
     }
 }
