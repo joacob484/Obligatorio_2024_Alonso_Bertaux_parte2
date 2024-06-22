@@ -27,41 +27,41 @@ public class Main12 {
             scanner.nextLine();
             switch (consulta) {
                 case 1:
-                    System.out.println("Ingrese el país:");
+                    System.out.println("Ingrese el codigo del pais EJ:'UY','AR': ");
                     String pais = scanner.next();
-                    System.out.println("Ingrese la fecha:");
+                    System.out.println("Ingrese la fecha en el fomrato 'YYYY-MM-DD':");
                     String fecha = scanner.next();
                     consultasSpotify.top10CancionesPais(pais,fecha);
                     System.out.println("Las 10 canciones más escuchadas en " + pais + " el " + fecha + " son:");
                     break;
                 case 2:
-                    System.out.println("Ingrese el dia:");
+                    System.out.println("Ingrese el fecha en el fomrato 'YYYY-MM-DD':");
                     String fecha2 = scanner.next();
                     System.out.println("Las 5 canciones más escuchadas en "  + fecha2 + " son:");
                     consultasSpotify.top5CancionesMasTop50(fecha2);
                     break;
                 case 3:
-                    System.out.println("Ingrese la fecha de inicio:");
+                    System.out.println("Ingrese la fecha de inicio en el fomrato 'YYYY-MM-DD':");
                     String inicio = scanner.next();
-                    System.out.println("Ingrese la fecha de fin:");
+                    System.out.println("Ingrese la fecha de fin en el fomrato 'YYYY-MM-DD':");
                     String fin = scanner.next();
-                    System.out.println("Las 7 artistas con mas top 50 en "  + inicio + "hasta" + fin + " son:");
+                    System.out.println("Las 7 artistas con mas top 50 en "  + inicio + " hasta " + fin + " son:");
                     consultasSpotify.top7ArtistasMasTop50(inicio,fin);
                     break;
                 case 4:
-                    System.out.println("Ingrese la fecha:");
+                    System.out.println("Ingrese la fecha en el fomrato 'YYYY-MM-DD':");
                     String fecha3 = scanner.nextLine();
                     System.out.println("Ingrese el nombre del artista:");
                     String artista = scanner.nextLine();
-                    System.out.println("Ingrese el nombre del pais:");
+                    System.out.println("Ingrese el codigo del pais EJ:'UY','AR' :");
                     String paisA = scanner.nextLine();
                     consultasSpotify.CantVecesArtistaTop50(fecha3,artista,paisA);
 
                     break;
                 case 5:
-                    System.out.println("Ingrese la fecha de inicio:");
+                    System.out.println("Ingrese la fecha de inicio en el fomrato 'YYYY-MM-DD':");
                     String inicio2 = scanner.next();
-                    System.out.println("Ingrese la fecha de fin:");
+                    System.out.println("Ingrese la fecha de fin en el fomrato 'YYYY-MM-DD':");
                     String fin2 = scanner.next();
                     System.out.println("Ingrese el tempo minimo:");
                     BigDecimal tempoMin = new BigDecimal(scanner.next());
