@@ -48,3 +48,9 @@ Tempo Max: 250
 
 -El método utilizó: 114625816 bytes de memoria
 -El método se ejecutó en: 1347.035625 ms
+
+
+Link de git hub:
+
+https: https://github.com/joacob484/Obligatorio_2024_Alonso_Bertaux_parte2.git
+SSH: git@github.com:joacob484/Obligatorio_2024_Alonso_Bertaux_parte2.git

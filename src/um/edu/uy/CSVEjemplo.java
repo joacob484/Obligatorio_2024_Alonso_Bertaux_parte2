@@ -117,9 +117,9 @@ public class CSVEjemplo {
         // Calcular el uso de memoria
         long memoryUsed = memoryAfter - memoryBefore;
 
-        System.out.println("El método utilizó: " + memoryUsed + " bytes de memoria");
+        System.out.println("La carga de datos utilizó: " + memoryUsed + " bytes de memoria");
 
-        System.out.println("El método se ejecutó en: " + durationInMilliseconds + " ms");
+        System.out.println("La carga de datos se ejecutó en: " + durationInMilliseconds + " ms");
     }
 }
 
