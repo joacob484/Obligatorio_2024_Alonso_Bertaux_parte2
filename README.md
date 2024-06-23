@@ -54,3 +54,9 @@ Link de git hub:
 
 https: https://github.com/joacob484/Obligatorio_2024_Alonso_Bertaux_parte2.git
 SSH: git@github.com:joacob484/Obligatorio_2024_Alonso_Bertaux_parte2.git
+
+
+
+-Para inicializar el programa:
+
+En CSVEjemplo en la linea 40 tienen que poner su ruta, igualmente ahi esta señalado en el programa.
